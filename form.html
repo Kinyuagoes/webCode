@@ -12,7 +12,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
         }
 
         .form-container {
@@ -28,14 +29,36 @@
             margin-bottom: 20px;
         }
 
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
         input,
-        textarea {
+        textarea,
+        select {
             width: 100%;
             padding: 10px;
             margin-top: 8px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+        }
+
+        /* Flexbox to keep country code and phone number on the same line */
+        .phone-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone-group select {
+            width: 35%; /* Adjust width for the dropdown */
+        }
+
+        .phone-group input {
+            width: 65%;
         }
 
         textarea {
@@ -64,7 +87,7 @@
     <div class="form-container">
         <h2>Contact Form</h2>
 
-        <form>
+        <form id="contactForm">
             <label>Full Name</label>
             <input type="text" name="fullname" placeholder="Enter your full name" required>
 
@@ -72,7 +95,17 @@
             <input type="email" name="email" placeholder="Enter your email" required>
 
             <label>Phone Number</label>
-            <input type="tel" name="phone" placeholder="Enter your phone number" required>
+            <div class="phone-group">
+                <select id="countryCode" name="countryCode" required>
+                    <option value="+1">+1 (US)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+91">+91 (IN)</option>
+                    <option value="+234">+234 (NG)</option>
+                    <option value="+61">+61 (AU)</option>
+                    <!-- Add more as needed -->
+                </select>
+                <input type="tel" id="phoneNumber" name="phone" placeholder="Phone Number" required>
+            </div>
 
             <label>Subject Line</label>
             <input type="text" name="subject" placeholder="Enter subject" required>
@@ -83,6 +116,33 @@
             <button type="submit">Send Message</button>
         </form>
     </div>
+
+    <script>
+        const countrySelect = document.getElementById('countryCode');
+        const phoneInput = document.getElementById('phoneNumber');
+        const MAX_TOTAL_LENGTH = 13;
+
+        function updateMaxLength() {
+          
+            const countryCodeLength = countrySelect.value.length;
+            const remainingChars = MAX_TOTAL_LENGTH - countryCodeLength;
+            
+            phoneInput.maxLength = remainingChars;
+            
+            // Trim current value if it exceeds new limit
+            if (phoneInput.value.length > remainingChars) {
+                phoneInput.value = phoneInput.value.substring(0, remainingChars);
+            }
+        }
+
+        countrySelect.addEventListener('change', updateMaxLength);
+    
+        phoneInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        updateMaxLength();
+    </script>
 
 </body>
 </html>
