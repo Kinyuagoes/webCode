@@ -3,29 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-<body>
-    <form action="/submit" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br><br>
-        <required>
-            <label for="Colour">Colour:</label>
-        <input type="colour" name="" placeholder="Enter your favourite colour"><br><br>
-
-
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
     <link rel="stylesheet" href="css/style.css"> 
 </head>
@@ -47,44 +24,47 @@
         <div class="left_side_bar">
             <h3>Left Side Bar</h3>
         </div>
+        
         <div class="content">
-    <h1>Contact Us</h1>
-    <p>This is the contact page of our website.</p>
+            <h1>Contact Us</h1>
+            <p>This is the contact page of our website.</p>
 
-    <form action="">
-        <input type="text" name="" placeholder="Enter your Name"
-        required><br>
-        <input type="email" name="" placeholder="Enter your Email"
-        required><br>
-        <input type="number" name="" placeholder="Enter your Phone Number"
-        required><br>
-        <input type="password" name="" placeholder="Enter your Password"
-        required><br>
-        <input type="date" name="" placeholder="Enter your Date of Birth"
-        required><br>
-        <input type="time" name="" placeholder="Enter your Time of Birth"
-        required><br>
-        <input type="color" name="" placeholder="Enter your Favourite Color"
-        required><br>
-        <input type="range" name="" placeholder="Enter your Age"
-        required><br>
-        <input type="url" name="" placeholder="Enter your Website"
-        required><br>
+            <form action="/submit" method="post">
+                <input type="text" name="full_name" placeholder="Enter your Name" required><br>
+                <input type="email" name="email" placeholder="Enter your Email" required><br>
+                <input type="number" name="phone" placeholder="Enter your Phone Number" required><br>
+                <input type="password" name="password" placeholder="Enter your Password" required><br>
+                
+                <input type="date" name="dob" required><br>
+                <input type="time" name="tob" required><br>
+                <input type="color" name="fav_color" required> <label>Favourite Color</label><br>
+                <input type="range" name="age_range" min="0" max="100" required> <label>Age</label><br>
+                <input type="url" name="website" placeholder="Enter your Website" required><br>
 
+                <p>Select your country:</p>
+                <select name="country" id="country_select" required>
+                    <option value="">Select your country</option>
+                    <option value="kenya">Kenya</option>
+                    <option value="uganda">Uganda</option>
+                    <option value="tanzania">Tanzania</option>
+                    <option value="rwanda">Rwanda</option>
+                </select><br><br>
 
+                <textarea name="message" id="message_box" cols="30" rows="5" placeholder="Enter your message"></textarea><br>
 
-        <button type="submit">Submit Details</button><br>
-    </form>
+                <button type="submit">Submit Details</button><br>
+            </form>
 
-    <dl>
-        <dt>Email</dt>
-        <dd><a href="mailto:bbit@example.com">bbit@example.com</a></dd>
-        <dt>Phone</dt>
-        <dd><a href="tel:+254 765 567 890">+254 765 567 890</a></dd>
-        <dt>Address</dt>
-        <dd>123 Mada, Nairobi</dd>
-    </dl>
+            <dl style="margin-top: 20px;">
+                <dt>Email</dt>
+                <dd><a href="mailto:bbit@example.com">bbit@example.com</a></dd>
+                <dt>Phone</dt>
+                <dd><a href="tel:+254765567890">+254 765 567 890</a></dd>
+                <dt>Address</dt>
+                <dd>123 Athiriver, Machakos</dd>
+            </dl>
         </div>
+
         <div class="right_side_bar">
             <h3>Right Side Bar</h3>
         </div>
@@ -94,4 +74,4 @@
         &#169; BBIT 2026
     </div>
 </body>
-</html
+</html>
